@@ -1,6 +1,7 @@
 // MotoForm.js
 import React, { useState } from 'react';
 import { createMoto, updateMoto } from '../api/api';
+import Swal from 'sweetalert2'; 
 
 // Função auxiliar para converter arquivo para Base64
 const convertFileToBase64 = (file) => {
@@ -56,15 +57,36 @@ const MotoForm = ({ motoToEdit = null, onSave = () => {} }) => {
         try {
             if (motoToEdit) {
                 await updateMoto(motoToEdit.id, formData);
-                alert('Moto atualizada com sucesso!');
+                 Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Moto atualizada com sucesso!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+               
             } else {
                 await createMoto(formData);
-                alert('Moto adicionada com sucesso!');
+                 Swal.fire({
+                    title: 'Sucesso!',
+                    text: 'Moto adicionada com sucesso!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+               
             }
-            onSave(); // Callback para, por exemplo, fechar o modal ou recarregar a lista
+            if (typeof onSave === 'function') {
+                onSave();
+            }
+            
         } catch (err) {
             setError('Erro ao salvar a moto. Tente novamente.');
             console.error(err);
+            Swal.fire({
+                title: 'Erro!',
+                text: 'Erro ao salvar a moto. Tente novamente.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         } finally {
             setLoading(false);
         }

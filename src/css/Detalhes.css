@@ -1,0 +1,201 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.moto-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Galeria principal */
+.moto-gallery {
+  position: relative;
+  text-align: center;
+}
+
+.carousel {
+  position: relative;
+}
+
+.main-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  z-index: 1;
+}
+
+.carousel-control:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.carousel-control.prev {
+  left: 10px;
+}
+
+.carousel-control.next {
+  right: 10px;
+}
+
+/* Miniaturas */
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnail-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.thumbnail-image:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail-image.active {
+  border-color: #007bff;
+}
+
+/* Botões */
+.moto-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-voltar,
+.btn-editar,
+.btn-excluir {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.btn-voltar {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-editar {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-excluir {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-voltar:hover {
+  background-color: #5a6268;
+}
+
+.btn-editar:hover {
+  background-color: #0056b3;
+}
+
+.btn-excluir:hover {
+  background-color: #c82333;
+}
+
+/* Informações da moto */
+.moto-info-container {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.moto-info-container h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.moto-marca {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.moto-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+.moto-status {
+  font-weight: 600;
+  color: #ffc107;
+  margin-bottom: 15px;
+}
+
+.moto-specs p {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+/* Responsivo */
+@media (min-width: 768px) {
+  .moto-details-container {
+    flex-direction: row;
+  }
+
+  .moto-gallery {
+    flex: 1;
+  }
+
+  .moto-info-container {
+    flex: 1;
+    border-top: none;
+    border-left: 1px solid #ddd;
+  }
+}

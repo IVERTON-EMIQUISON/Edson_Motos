@@ -1,7 +1,8 @@
 // MotoList.js
 import React, { useEffect, useState } from 'react';
 import { getMotos } from '../api/api';
-import '../App.css';
+import '../css/App.css';
+import { Link } from 'react-router-dom';
 
 const MotoList = () => {
     const [motos, setMotos] = useState([]);
@@ -33,9 +34,8 @@ const MotoList = () => {
     }
 
     return (
-       
         <div className="moto-list-container">
-    
+            <h1>Estoque de Motos</h1>
             {motos.length === 0 ? (
                 <p>Nenhuma moto encontrada.</p>
             ) : (
@@ -48,8 +48,10 @@ const MotoList = () => {
                             <div className="moto-info">
                                 <h3>{moto.modelo} - {moto.marca}</h3>
                                 <p>Preço: R$ {moto.preco.toFixed(2)}</p>
-                                {/* Exemplo de link para página de detalhes, se você tiver uma */}
-                                <a href={`/motos/${moto.id}`}>Ver Detalhes</a>
+                                <p>Ano: {moto.ano}</p>
+                                <div className="moto-actions">
+                                    <Link to={`/motos/${moto.id}`} className="btn-detalhes">Ver Detalhes</Link>
+                                </div>
                             </div>
                         </div>
                     ))}
