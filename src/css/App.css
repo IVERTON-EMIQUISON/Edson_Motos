@@ -12,7 +12,8 @@ header, footer {
   width: 100%;
   background-color: #333;
   color: white;
-  padding: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
 header nav a,
@@ -34,6 +35,97 @@ header nav button {
     max-width: 100%;
     margin: 0 auto;
     padding: 0px;
+}
+/* Estilos do cabeçalho */
+/* Letreiro animado */
+.marquee {
+  width: 100%;
+  background-color: #111;
+  color: #f1f1f1;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 2px solid #ffcc00;
+}
+
+.marquee p {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Estilo geral do header */
+header {
+  background-color: #0c0a0a;
+  color: white;
+  padding-bottom: 20px;
+}
+
+/* Container principal do logo e nav */
+.logo-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+}
+
+/* Estilo do logo */
+.logo-container h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.logo-container .edson {
+  color: #ffcc00;
+}
+
+.logo-container .motos {
+  color: white;
+}
+
+/* Navegação */
+nav a,
+nav button {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+nav a:hover,
+nav button:hover {
+  color: #ffcc00;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .logo-nav-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  nav a,
+  nav button {
+    margin: 0 10px;
+  }
+
+  .logo-container h1 {
+    font-size: 1.8em;
+  }
 }
 
 /* Estilos do cabeçalho e navegação */

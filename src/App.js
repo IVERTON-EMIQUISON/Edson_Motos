@@ -17,18 +17,23 @@ import './css/App.css';
 const Header = () => {
     const { isAuthenticated, logout } = useAuth();
     return (
-    <header>
-            <div className="logo-container">
-                <h1><span className="edson">Edson</span><span className="motos">Motos</span></h1>
+        <header>
+            <div className="marquee">
+                <p>Compra, venda e troca de motos novas e usadas | Revisadas | Financiamento disponível | Pagamos à vista!</p>
             </div>
-            <p className="slogan">Compra, venda e troca de motos novas e usadas</p>
-            <nav>
-                <a href="/">Home</a>
-                {isAuthenticated && <a href="/admin">Admin</a>}
-                {!isAuthenticated && <a href="/login">Login</a>}
-                {isAuthenticated && <button onClick={logout}>Sair</button>}
-            </nav>
-    
+
+            <div className="logo-nav-container">
+                <div className="logo-container">
+                    <h1><span className="edson">Edson</span><span className="motos">Motos</span></h1>
+                </div>
+
+                <nav>
+                    <a href="/">Home</a>
+                    {isAuthenticated && <a href="/admin">Admin</a>}
+                    {!isAuthenticated && <a href="/login">Login</a>}
+                    {isAuthenticated && <button onClick={logout}>Sair</button>}
+                </nav>
+            </div>
         </header>
     );
 };
@@ -38,6 +43,7 @@ const App = () => {
             <AuthProvider> 
                 <Header /> {/* O cabeçalho agora está fora do .app-container */}
                 <div className="app-container"> {/* Este div limita a largura do conteúdo principal */}
+                   
                     <main>
                         <Routes>
                             <Route path="/" element={<MotoList />} />
