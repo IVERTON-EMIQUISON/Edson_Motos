@@ -33,7 +33,7 @@ const MotoList = () => {
         return <p style={{ color: 'red' }}>{error}</p>;
     }
 
-    return (
+     return (
         <div className="moto-list-container">
             <h1>Estoque de Motos</h1>
             {motos.length === 0 ? (
@@ -54,11 +54,35 @@ const MotoList = () => {
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    ))}    
+                    <section className="location-section">
+                        <div className="container">
+                            <h2>Onde Estamos</h2>
+                            <div className="map-container">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.7679666617321!2d-38.20728132487272!3d-6.121029398628038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7bb33397f21d709%3A0x12447efcbe656a7!2sEDSON%20MOTOS!5e0!3m2!1spt-BR!2sbr!4v1754095537700!5m2!1spt-BR!2sbr"
+                                    width="100%"
+                                    height="450"
+                                    style={{ border: 0 }}
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Localização da loja"
+                                ></iframe>
+                            </div>
+                        
+                            <a href="https://maps.app.goo.gl/6VNAZeQXrv1mVbGj6" target="_blank" className="btn-secondary" rel="noopener noreferrer">
+                                Traçar Rota <i className="fas fa-map-marker-alt"></i>
+                            </a>
+                        </div>
+                    </section>
                 </div>
+
             )}
         </div>
     );
 };
+ 
+
 
 export default MotoList;
