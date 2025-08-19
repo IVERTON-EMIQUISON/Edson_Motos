@@ -7,7 +7,7 @@ import { deleteMoto } from '../api/api';
 const DeleteMoto = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-
+ 
     useEffect(() => {
         const handleDelete = async () => {
             const resultado = await Swal.fire({
@@ -18,7 +18,7 @@ const DeleteMoto = () => {
                 confirmButtonText: 'Sim, excluir!',
                 cancelButtonText: 'Cancelar'
             });
-
+            
             if (resultado.isConfirmed) {
                 try {
                     await deleteMoto(id);
@@ -46,6 +46,7 @@ const DeleteMoto = () => {
     }, [id, navigate]);
 
     return (
+        
         <p>Redirecionando...</p>
     );
 };

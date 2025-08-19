@@ -4,6 +4,8 @@ import { createMoto, updateMoto } from '../api/api';
 import Swal from 'sweetalert2'; 
 import '../css/App.css'; // Certifique-se de ter um CSS para as miniaturas
 
+import { useNavigate } from 'react-router-dom';
+
 // Função auxiliar para converter arquivo para Base64
 const convertFileToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -20,6 +22,7 @@ const convertFileToBase64 = (file) => {
         marca: motoToEdit?.marca || '',
         cilindradas: motoToEdit?.cilindradas || '',
         ano: motoToEdit?.ano || '',
+        kilometragem: motoToEdit?.kilometragem || '',
         preco: motoToEdit?.preco || '',
         cor: motoToEdit?.cor || '',
         status: motoToEdit?.status || '',
@@ -33,6 +36,7 @@ const convertFileToBase64 = (file) => {
     
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -91,6 +95,7 @@ const convertFileToBase64 = (file) => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
+                navigate('/');
             } else {
                 await createMoto(motoDataToSubmit);
                 Swal.fire({
@@ -99,6 +104,7 @@ const convertFileToBase64 = (file) => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
+                navigate('/'); // Redireciona para a lista de motos após adicionar
             }
             if (typeof onSave === 'function') {
                 onSave();
@@ -126,6 +132,7 @@ const convertFileToBase64 = (file) => {
             <label>Marca: <input type="text" name="marca" value={formData.marca} onChange={handleChange} required /></label>
             <label>Cilindradas: <input type="number" name="cilindradas" value={formData.cilindradas} onChange={handleChange} required /></label>
             <label>Ano: <input type="number" name="ano" value={formData.ano} onChange={handleChange} required /></label>
+            <label>Kilometragem: <input type="number" name="kilometragem" value={formData.kilometragem} onChange={handleChange} required /></label>
             <label>Preço: <input type="number" name="preco" value={formData.preco} onChange={handleChange} step="0.01" required /></label>
             <label>Cor: <input type="text" name="cor" value={formData.cor} onChange={handleChange} required /></label>
             

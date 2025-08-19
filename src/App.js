@@ -28,10 +28,10 @@ const Header = () => {
                 </div>
 
                 <nav>
-                    <a href="/">Home</a>
-                    {isAuthenticated && <a href="/admin">Admin</a>}
-                    {!isAuthenticated && <a href="/login">Login</a>}
-                    {isAuthenticated && <button onClick={logout}>Sair</button>}
+                    <a href="/">Pagina Inicial</a>
+                    {isAuthenticated && <a href="/admin">Adminastrador</a>}
+                    {!isAuthenticated && <a href="/login">Realizar Login</a>}
+                    {isAuthenticated && <button onClick={logout}>Sair da Conta</button>}
                 </nav>
             </div>
         </header>

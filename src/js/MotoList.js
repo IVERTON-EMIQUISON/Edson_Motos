@@ -23,7 +23,7 @@ const MotoList = () => {
         };
 
         fetchMotos();
-    }, []); // O array vazio [] garante que o useEffect rode apenas uma vez, na montagem do componente.
+    }, []);
 
     if (loading) {
         return <p>Carregando motos...</p>;
@@ -33,7 +33,7 @@ const MotoList = () => {
         return <p style={{ color: 'red' }}>{error}</p>;
     }
 
-     return (
+    return (
         <div className="moto-list-container">
             <h1>Estoque de Motos</h1>
             {motos.length === 0 ? (
@@ -42,19 +42,40 @@ const MotoList = () => {
                 <div className="motos-grid">
                     {motos.map(moto => (
                         <div key={moto.id} className="moto-card">
-                            {moto.imagens && moto.imagens.length > 0 && (
-                                <img src={moto.imagens[0]} alt={moto.modelo} className="moto-image" />
-                            )}
+                            <div className="moto-image-container">
+                                {moto.imagens && moto.imagens.length > 0 ? (
+                                    <img 
+                                        src={moto.imagens[0]} 
+                                        alt={moto.modelo} 
+                                        className="moto-image" 
+                                    />
+                                ) : (
+                                    <div className="placeholder">Sem imagem</div>
+                                )}
+                            </div>
+
                             <div className="moto-info">
-                                <h3>{moto.modelo} - {moto.marca}</h3>
-                                <p>Preço: R$ {moto.preco.toFixed(2)}</p>
-                                <p>Ano: {moto.ano}</p>
-                                <div className="moto-actions">
-                                    <Link to={`/motos/${moto.id}`} className="btn-detalhes">Ver Detalhes</Link>
+                                <h3>{moto.marca} {moto.modelo}</h3>
+                                <div className="moto-specs">
+                                    <span>{moto.ano}</span> 
                                 </div>
+
+                                <div className="moto-location">
+                                    {moto.local || "Local não informado"}
+                                </div>
+
+                                <div className="moto-price">
+                                    R$ {moto.preco.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                                </div>
+
+                                <Link to={`/motos/${moto.id}`} className="btn-comprar">
+                                    Ver oferta
+                                </Link>
                             </div>
                         </div>
-                    ))}    
+                    ))}
+
+                    {/* SEÇÃO LOCALIZAÇÃO */}
                     <section className="location-section">
                         <div className="container">
                             <h2>Onde Estamos</h2>
@@ -77,12 +98,9 @@ const MotoList = () => {
                         </div>
                     </section>
                 </div>
-
             )}
         </div>
     );
 };
- 
-
 
 export default MotoList;

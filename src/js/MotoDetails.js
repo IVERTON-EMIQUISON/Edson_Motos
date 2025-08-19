@@ -133,7 +133,8 @@ const MotoDetails = () => {
                     {isAuthenticated && (
                         <>
                             <Link to={`/admin/edit/${moto.id}`} className="btn-editar">Editar</Link>
-                            <Link to={`/admin/delete/${moto.id}`} className="btn-excluir">Excluir</Link>
+                            <button onClick={handleDelete} className="btn-excluir">Excluir</button>
+                          
                         </>
                     )}
                 </div>
@@ -142,10 +143,22 @@ const MotoDetails = () => {
             <div className="moto-info-container"> {/* Container para os detalhes */}
                 <h1>{moto.modelo}</h1>
                 <p className="moto-marca">{moto.marca}</p>
-                <p className="moto-price">R$ {moto.preco.toFixed(2)}</p>
-                <p className="moto-status">{moto.status}</p>
+                <p className="moto-price" style={{ color: 'green' }}>R$ {moto.preco.toFixed(2)}</p>
+                {moto.status === 'vendida' && (
+                    <p className="moto-status sold" style={{ color: 'red' }}>Vendida</p>
+                )}
+                {moto.status === 'disponivel' && (
+                    <p className="moto-status available" style={{ color: 'green' }}>Disponível</p>
+                )}
+                {moto.status === 'reservada' && (
+                    <p className="moto-status reserved" style={{ color: 'blue' }}>Reservada</p>
+                )}
+                { moto.status === 'manutencao' && (
+                    <p className="moto-status maintenance" style={{ color: 'orange' }}>Em Manutenção</p>
+                )}
                 <div className="moto-specs">
                     <p><strong>Ano:</strong> {moto.ano}</p>
+                    <p><strong>KM:</strong> {moto.km || 0} Km</p>
                     <p><strong>Cor:</strong> {moto.cor}</p>
                     <p><strong>Cilindradas:</strong> {moto.cilindradas}cc</p>
                     <p><strong>Descrição:</strong> {moto.descricao}</p>

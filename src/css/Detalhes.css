@@ -1,32 +1,15 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
 .moto-details-container {
   display: flex;
-  flex-direction: column;
-  gap: 30px;
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 24px;
+  gap: 2rem;
+  padding: 2rem;
+  background: #f9f9f9;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Galeria principal */
 .moto-gallery {
+  flex: 1;
   position: relative;
-  text-align: center;
 }
 
 .carousel {
@@ -35,29 +18,22 @@ a {
 
 .main-image {
   width: 100%;
-  max-height: 500px;
+  border-radius: 12px;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .carousel-control {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: none;
+  background: rgba(0,0,0,0.5);
   color: white;
-  padding: 8px 14px;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 50%;
-  transition: background 0.2s ease;
-  z-index: 1;
-}
-
-.carousel-control:hover {
-  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .carousel-control.prev {
@@ -68,128 +44,92 @@ a {
   right: 10px;
 }
 
-/* Miniaturas */
 .thumbnails {
   display: flex;
-  justify-content: center;
   gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
+  margin-top: 1rem;
+  overflow-x: auto;
+  padding-bottom: 5px;
 }
 
 .thumbnail-image {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: cover;
-  border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
+  opacity: 0.7;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
 .thumbnail-image:hover {
   transform: scale(1.05);
+  opacity: 1;
 }
 
 .thumbnail-image.active {
-  border-color: #007bff;
+  border: 2px solid #007bff;
+  opacity: 1;
 }
 
-/* Botões */
 .moto-actions {
-  margin-top: 20px;
+  margin-top: 1.5rem;
   display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .btn-voltar,
 .btn-editar,
 .btn-excluir {
-  padding: 10px 18px;
+  padding: 0.6rem 1.2rem;
   border-radius: 8px;
-  font-weight: 500;
-  border: none;
-  transition: 0.2s ease;
-}
-
-.btn-voltar {
-  background-color: #6c757d;
+  text-decoration: none;
   color: white;
+  font-weight: bold;
+  transition: background 0.2s;
 }
 
-.btn-editar {
-  background-color: #007bff;
-  color: white;
-}
+.btn-voltar { background: #6c757d; }
+.btn-voltar:hover { background: #5a6268; }
 
-.btn-excluir {
-  background-color: #dc3545;
-  color: white;
-}
+.btn-editar { background: #007bff; }
+.btn-editar:hover { background: #0069d9; }
 
-.btn-voltar:hover {
-  background-color: #5a6268;
-}
+.btn-excluir { background: #dc3545; }
+.btn-excluir:hover { background: #c82333; }
 
-.btn-editar:hover {
-  background-color: #0056b3;
-}
-
-.btn-excluir:hover {
-  background-color: #c82333;
-}
-
-/* Informações da moto */
 .moto-info-container {
-  padding: 20px;
-  border-top: 1px solid #ddd;
+  flex: 1;
 }
 
 .moto-info-container h1 {
   font-size: 2rem;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.moto-marca {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .moto-price {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #28a745;
-  margin-bottom: 10px;
+  margin: 1rem 0;
 }
 
 .moto-status {
-  font-weight: 600;
-  color: #ffc107;
-  margin-bottom: 15px;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
+
+.sold { background: #f8d7da; color: #721c24; }
+.available { background: #d4edda; color: #155724; }
+.reserved { background: #cce5ff; color: #004085; }
+.maintenance { background: #fff3cd; color: #856404; }
 
 .moto-specs p {
-  margin-bottom: 8px;
-  font-size: 1rem;
+  margin: 0.4rem 0;
 }
 
-/* Responsivo */
-@media (min-width: 768px) {
-  .moto-details-container {
-    flex-direction: row;
-  }
-
-  .moto-gallery {
-    flex: 1;
-  }
-
-  .moto-info-container {
-    flex: 1;
-    border-top: none;
-    border-left: 1px solid #ddd;
-  }
+.moto-specs strong {
+  font-weight: bold;
 }
